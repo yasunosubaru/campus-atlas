@@ -10,6 +10,12 @@ flutter/ephemeral/
 x64/
 x86/
 
+# …except the WebView2 loader. The runner links against
+# runner/webview2/x64/WebView2Loader.dll.lib, so without it the Windows build
+# fails at link time with LNK1181 — on CI as well as on a fresh clone.
+!runner/webview2/x64/
+!runner/webview2/x64/**
+
 # Visual Studio cache files
 # files ending in .cache can be ignored
 *.[Cc]ache
