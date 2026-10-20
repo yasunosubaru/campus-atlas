@@ -27,6 +27,7 @@ agenda all live in the same window.
 - [架构](#架构)
 - [数据来源与许可](#数据来源与许可)
 - [隐私与脱敏](#隐私与脱敏)
+- [文档](#文档)
 - [路线图](#路线图)
 - [参与贡献](#参与贡献)
 - [代码量](#代码量机维护请勿手改)
@@ -282,6 +283,20 @@ python tools/check_desensitization.py     # 本地跑一遍，退出码非 0 即
 ```
 
 个人姓名、学号、电话、邮箱不进这个仓库，它是公开的。
+
+---
+
+## 文档 / Documents
+
+仓库里记着**实况证据**，不只是功能列表：
+
+| 文档 | 内容 |
+|---|---|
+| [docs/parity-plan.md](docs/parity-plan.md) | 与原版的功能对齐清单：7 个「部分实现」项的逐条状态、卡在哪、为什么 |
+| [docs/grades-and-reviews.md](docs/grades-and-reviews.md) | 成绩与评教的实况记录：真实页面上的字段映射、单点登录的跳链、每一步的证据与失败原因 |
+| [docs/timetable-and-map.md](docs/timetable-and-map.md) | 课表解析规则、地图图层与数据来源 |
+
+这些文档里的**结论都带证据**（页面结构、响应字段、实测数字），遇到分歧时以实况为准。
 
 ---
 
