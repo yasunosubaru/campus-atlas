@@ -99,8 +99,8 @@ void main() {
     });
 
     test('the required-only scope drops electives', () {
-      final summary =
-          summarizeGrades(rows, GpaStandard.whu, scope: GradeScope.requiredOnly);
+      final summary = summarizeGrades(rows, GpaStandard.whu,
+          scope: GradeScope.requiredOnly);
 
       // (4.0×3 + 1.5×1) / 4
       expect(summary.value, closeTo(3.375, 1e-9));
@@ -156,8 +156,18 @@ void main() {
   group('termStats', () {
     test('orders terms chronologically and keeps empty ones', () {
       final rows = [
-        _rec(year: '2025-2026', semester: '1', name: 'A', score: 90, scoreText: '90'),
-        _rec(year: '2024-2025', semester: '2', name: 'B', score: 80, scoreText: '80'),
+        _rec(
+            year: '2025-2026',
+            semester: '1',
+            name: 'A',
+            score: 90,
+            scoreText: '90'),
+        _rec(
+            year: '2024-2025',
+            semester: '2',
+            name: 'B',
+            score: 80,
+            scoreText: '80'),
         _rec(
           year: '2025-2026',
           semester: '2',

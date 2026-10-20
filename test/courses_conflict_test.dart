@@ -66,7 +66,9 @@ void main() {
       expect(
         conflictWithMyTimetable(
           _master(weeks: '1-4'),
-          [_mine(weeks: {6, 7, 8})],
+          [
+            _mine(weeks: {6, 7, 8})
+          ],
         ),
         ConflictStatus.free,
       );
@@ -76,7 +78,9 @@ void main() {
       expect(
         conflictWithMyTimetable(
           _master(weeks: '1-4,6'),
-          [_mine(weeks: {5, 6})],
+          [
+            _mine(weeks: {5, 6})
+          ],
         ),
         ConflictStatus.clash,
       );

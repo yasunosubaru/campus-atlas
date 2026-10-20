@@ -131,8 +131,7 @@ class _HamCenterScreenState extends State<HamCenterScreen> {
         Text(l10n.hamCenterIntro, style: text.bodySmall),
         const SizedBox(height: AppTheme.spaceMd),
         if (_user != null) _profile(_user!, text, scheme),
-        if (_userError.isNotEmpty)
-          _errorLine(l10n, _userError, text, scheme),
+        if (_userError.isNotEmpty) _errorLine(l10n, _userError, text, scheme),
         const SizedBox(height: AppTheme.spaceMd),
         SectionHeader(l10n.hamRank),
         _looseSection(
@@ -179,7 +178,8 @@ class _HamCenterScreenState extends State<HamCenterScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(user.nickname, style: text.titleMedium),
-                Text('Ham', style: text.bodySmall?.copyWith(color: scheme.outline)),
+                Text('Ham',
+                    style: text.bodySmall?.copyWith(color: scheme.outline)),
               ],
             ),
           ),
@@ -271,15 +271,15 @@ class _HamCenterScreenState extends State<HamCenterScreen> {
                       Expanded(
                         child: Text(
                           comment.createTime,
-                          style: text.labelSmall
-                              ?.copyWith(color: scheme.outline),
+                          style:
+                              text.labelSmall?.copyWith(color: scheme.outline),
                         ),
                       ),
                       if (comment.rate > 0)
                         Text(
                           '★' * comment.rate,
-                          style: text.bodySmall
-                              ?.copyWith(color: scheme.tertiary),
+                          style:
+                              text.bodySmall?.copyWith(color: scheme.tertiary),
                         ),
                     ],
                   ),

@@ -96,9 +96,8 @@ class AgendaItem {
         createdAt: createdAt,
         sortOrder: sortOrder ?? this.sortOrder,
         repeat: repeat ?? this.repeat,
-        repeatUntil: clearRepeatUntil
-            ? null
-            : (repeatUntil ?? this.repeatUntil),
+        repeatUntil:
+            clearRepeatUntil ? null : (repeatUntil ?? this.repeatUntil),
       );
 
   Map<String, Object?> toJson() => {
@@ -109,8 +108,7 @@ class AgendaItem {
         if (createdAt != null) 'createdAt': createdAt!.toIso8601String(),
         'sortOrder': sortOrder,
         'repeat': repeat.id,
-        if (repeatUntil != null)
-          'repeatUntil': repeatUntil!.toIso8601String(),
+        if (repeatUntil != null) 'repeatUntil': repeatUntil!.toIso8601String(),
       };
 
   static Result<AgendaItem> fromJson(Map<String, Object?> json) {

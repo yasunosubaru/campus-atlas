@@ -338,8 +338,9 @@ class _JwglBrowserScreenState extends State<JwglBrowserScreen> {
     if (!grid.isEmpty) {
       final records = recordsFromGrid(grid);
       if (records.isNotEmpty) {
-        final merged =
-            await AppScope.of(context, dependOn: false).gradeArchive.merge(records);
+        final merged = await AppScope.of(context, dependOn: false)
+            .gradeArchive
+            .merge(records);
         if (!mounted) return;
         archived = merged.dataOrNull;
         final failure = merged.errorOrNull;

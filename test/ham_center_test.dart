@@ -76,8 +76,7 @@ List<HamMcpTool> allTools() => [
           arguments: ['course_table_id', 'year', 'semester'],
           required: ['course_table_id', 'year', 'semester']),
       tool('get_score_rank', arguments: ['cursor'], required: ['cursor']),
-      tool('get_course_want_list',
-          arguments: ['cursor'], required: ['cursor']),
+      tool('get_course_want_list', arguments: ['cursor'], required: ['cursor']),
       tool('get_my_comments', arguments: ['cursor'], required: ['cursor']),
     ];
 
@@ -196,7 +195,10 @@ void main() {
             },
             'get_course_want_list': {
               'items': [
-                {'course': {'name': '大学物理'}, 'instructor': '李四'},
+                {
+                  'course': {'name': '大学物理'},
+                  'instructor': '李四'
+                },
               ],
               'total': 1,
             },

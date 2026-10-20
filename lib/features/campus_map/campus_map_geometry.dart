@@ -38,9 +38,7 @@ class CampusMapGeometry {
 
   Offset offsetOf(double latitude, double longitude) => Offset(
         rect.left +
-            (longitude - campusWest) /
-                (campusEast - campusWest) *
-                rect.width,
+            (longitude - campusWest) / (campusEast - campusWest) * rect.width,
         rect.top +
             (campusNorth - latitude) /
                 (campusNorth - campusSouth) *
@@ -49,13 +47,9 @@ class CampusMapGeometry {
 
   ({double lat, double lon}) latLonOf(Offset point) => (
         lat: campusNorth -
-            (point.dy - rect.top) /
-                rect.height *
-                (campusNorth - campusSouth),
+            (point.dy - rect.top) / rect.height * (campusNorth - campusSouth),
         lon: campusWest +
-            (point.dx - rect.left) /
-                rect.width *
-                (campusEast - campusWest),
+            (point.dx - rect.left) / rect.width * (campusEast - campusWest),
       );
 }
 

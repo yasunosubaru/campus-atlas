@@ -154,12 +154,15 @@ class GradeRecord {
         year: year,
         semester: semester,
         courseName: name,
-        courseCode: json['courseCode'] is String ? json['courseCode']! as String : '',
+        courseCode:
+            json['courseCode'] is String ? json['courseCode']! as String : '',
         teacher: json['teacher'] is String ? json['teacher']! as String : '',
         courseKind:
             json['courseKind'] is String ? json['courseKind']! as String : '',
-        credits: json['credits'] is num ? (json['credits']! as num).toDouble() : 0,
-        scoreText: json['scoreText'] is String ? json['scoreText']! as String : '',
+        credits:
+            json['credits'] is num ? (json['credits']! as num).toDouble() : 0,
+        scoreText:
+            json['scoreText'] is String ? json['scoreText']! as String : '',
         score: json['score'] is num ? (json['score']! as num).toDouble() : null,
         gradePoint: json['gradePoint'] is num
             ? (json['gradePoint']! as num).toDouble()

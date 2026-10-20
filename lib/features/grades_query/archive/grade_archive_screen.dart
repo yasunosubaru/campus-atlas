@@ -54,8 +54,8 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
   }
 
   void _setRequiredOnly(bool required) {
-    setState(() =>
-        _scope = required ? GradeScope.requiredOnly : GradeScope.all);
+    setState(
+        () => _scope = required ? GradeScope.requiredOnly : GradeScope.all);
     AppScope.of(context, dependOn: false).settings.setGpaRequiredOnly(required);
   }
 
@@ -70,13 +70,15 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
       context: context,
       builder: (dialog) => _ManualGradeDialog(
         l10n: l10n,
-        latest: _rows.isEmpty ? null : ([..._rows]..sort(GradeRecord.compare)).last,
+        latest:
+            _rows.isEmpty ? null : ([..._rows]..sort(GradeRecord.compare)).last,
       ),
     );
     if (record == null || !mounted) return;
 
-    final merged =
-        await AppScope.of(context, dependOn: false).gradeArchive.merge([record]);
+    final merged = await AppScope.of(context, dependOn: false)
+        .gradeArchive
+        .merge([record]);
     if (!mounted) return;
 
     final failure = merged.errorOrNull;
@@ -293,8 +295,8 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
             runSpacing: AppTheme.spaceXs,
             children: [
               if (!weighted)
-                _chip(l10n.archiveChipAvg.replaceAll(
-                    '%s', summary.isEmpty ? '—' : summary.avg.toStringAsFixed(2))),
+                _chip(l10n.archiveChipAvg.replaceAll('%s',
+                    summary.isEmpty ? '—' : summary.avg.toStringAsFixed(2))),
               _chip(l10n.archiveChipCredits
                   .replaceAll('%s', _credits(summary.countedCredits))),
               _chip(l10n.archiveChipCounted
@@ -356,8 +358,8 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
                 maxScale: _standard.maxScale,
                 barColor: scheme.primary,
                 mutedColor: scheme.outline,
-                textStyle: theme.textTheme.bodySmall ??
-                    const TextStyle(fontSize: 12),
+                textStyle:
+                    theme.textTheme.bodySmall ?? const TextStyle(fontSize: 12),
               ),
             ),
           ),
@@ -368,8 +370,7 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(term.label,
-                        style: theme.textTheme.bodyMedium),
+                    child: Text(term.label, style: theme.textTheme.bodyMedium),
                   ),
                   Text(
                     [
@@ -410,8 +411,7 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(row.courseName,
-                            style: theme.textTheme.bodyMedium),
+                        Text(row.courseName, style: theme.textTheme.bodyMedium),
                         const SizedBox(height: 2),
                         Text(
                           [
@@ -430,9 +430,7 @@ class _GradeArchiveScreenState extends State<GradeArchiveScreen> {
                   Text(
                     row.scoreText.isEmpty ? '—' : row.scoreText,
                     style: theme.textTheme.titleSmall?.copyWith(
-                      color: passesCourse(row)
-                          ? scheme.primary
-                          : scheme.error,
+                      color: passesCourse(row) ? scheme.primary : scheme.error,
                     ),
                   ),
                   if (row.source == 'manual')
@@ -499,8 +497,8 @@ class _TrendPainter extends CustomPainter {
         final height = (plotHeight * ratio).clamp(2.0, plotHeight);
         canvas.drawRRect(
           RRect.fromRectAndRadius(
-            Rect.fromLTWH(centerX - barWidth / 2, baseline - height, barWidth,
-                height),
+            Rect.fromLTWH(
+                centerX - barWidth / 2, baseline - height, barWidth, height),
             const Radius.circular(4),
           ),
           barPaint,

@@ -86,7 +86,8 @@ void main() {
       await repo.profiles();
       final created = (await repo.createProfile('辅修')).requireValue.last;
 
-      final renamed = (await repo.renameProfile(created.id, '第二学位')).requireValue;
+      final renamed =
+          (await repo.renameProfile(created.id, '第二学位')).requireValue;
       expect(renamed.map((p) => p.name), ['', '第二学位']);
     });
 
@@ -196,7 +197,9 @@ void main() {
     });
 
     test('a document without times parses with empty ones', () {
-      final json = course().toJson()..remove('startTime')..remove('endTime');
+      final json = course().toJson()
+        ..remove('startTime')
+        ..remove('endTime');
       final parsed = Course.fromJson(json);
       expect(parsed.requireValue.startTime, isEmpty);
       expect(parsed.requireValue.endTime, isEmpty);

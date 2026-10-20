@@ -119,8 +119,8 @@ void main() {
 
     test('a one-off item appears only on its date', () {
       final due = DateTime(2026, 10, 20);
-      expect(agendaOnDate([item(due: due)], DateTime(2026, 10, 20)),
-          hasLength(1));
+      expect(
+          agendaOnDate([item(due: due)], DateTime(2026, 10, 20)), hasLength(1));
       expect(agendaOnDate([item(due: due)], DateTime(2026, 10, 21)), isEmpty);
     });
 
@@ -201,10 +201,9 @@ void main() {
 
   group('clock helpers', () {
     test('parseClassTimeRange accepts common separators', () {
-      expect(parseClassTimeRange('08:00-09:40'),
-          (start: '08:00', end: '09:40'));
-      expect(parseClassTimeRange('8:00~9:40'),
-          (start: '08:00', end: '09:40'));
+      expect(
+          parseClassTimeRange('08:00-09:40'), (start: '08:00', end: '09:40'));
+      expect(parseClassTimeRange('8:00~9:40'), (start: '08:00', end: '09:40'));
       expect(parseClassTimeRange(' 10:00 – 11:40 '),
           (start: '10:00', end: '11:40'));
     });

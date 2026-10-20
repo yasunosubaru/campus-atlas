@@ -164,8 +164,8 @@ class _AcademicStatusScreenState extends State<AcademicStatusScreen> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Text(term.label,
-                            style: theme.textTheme.bodyMedium),
+                        child:
+                            Text(term.label, style: theme.textTheme.bodyMedium),
                       ),
                       Text(
                         l10n.statusTermLine
@@ -254,7 +254,8 @@ class _AcademicStatusScreenState extends State<AcademicStatusScreen> {
             spacing: AppTheme.spaceSm,
             runSpacing: AppTheme.spaceXs,
             children: [
-              _chip(l10n.statusPassed,
+              _chip(
+                  l10n.statusPassed,
                   '${_format(status.passedCredits)} / '
                   '${_format(status.attemptedCredits)}'),
               _chip(l10n.statusFailed, '${status.failed.length}'),

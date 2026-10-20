@@ -15,8 +15,7 @@ class ClassReminder {
 
   Duration timeUntil(DateTime now) => startsAt.difference(now);
 
-  bool isRunning(DateTime now) =>
-      !startsAt.isAfter(now) && endsAt.isAfter(now);
+  bool isRunning(DateTime now) => !startsAt.isAfter(now) && endsAt.isAfter(now);
 }
 
 /// The next class that has not ended yet, or null.
@@ -103,6 +102,5 @@ String? _normaliseClock(String raw) {
 }
 
 /// `08:00` for a date-time, for display.
-String formatClock(DateTime at) =>
-    '${at.hour.toString().padLeft(2, '0')}:'
+String formatClock(DateTime at) => '${at.hour.toString().padLeft(2, '0')}:'
     '${at.minute.toString().padLeft(2, '0')}';

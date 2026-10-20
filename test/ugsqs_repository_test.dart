@@ -47,8 +47,7 @@ void main() {
       ).resolveEntry(userId: ' STUDENT-0000 ');
 
       expect(result.isSuccess, isTrue, reason: result.errorOrNull?.message);
-      expect(result.requireValue,
-          'https://ugsqs.whu.edu.cn/eval?ticket=abc');
+      expect(result.requireValue, 'https://ugsqs.whu.edu.cn/eval?ticket=abc');
       expect(captured.method, 'POST');
       expect(captured.url.path, '/loginSSO');
       expect(captured.bodyFields, {'userId': 'STUDENT-0000'});

@@ -62,15 +62,15 @@ void main() {
 
     test('JSON round trip keeps every field', () {
       final record = _rec();
-      final decoded =
-          GradeRecord.fromJson(jsonDecode(jsonEncode(record.toJson())) as Map<String, Object?>);
+      final decoded = GradeRecord.fromJson(
+          jsonDecode(jsonEncode(record.toJson())) as Map<String, Object?>);
       expect(decoded.requireValue, record);
     });
 
     test('JSON parse rejects a row without year/semester/name', () {
       expect(GradeRecord.fromJson(const {'courseName': 'x'}).isFailure, isTrue);
-      expect(GradeRecord.fromJson(const {'year': '2025-2026'}).isFailure,
-          isTrue);
+      expect(
+          GradeRecord.fromJson(const {'year': '2025-2026'}).isFailure, isTrue);
     });
   });
 
@@ -84,7 +84,8 @@ void main() {
       final store = InMemorySettingsStore();
       final repo = GradeArchiveRepository(store);
 
-      final result = await repo.merge([_rec(), _rec(code: 'PHYS002', name: '大学物理')]);
+      final result =
+          await repo.merge([_rec(), _rec(code: 'PHYS002', name: '大学物理')]);
       final merged = result.requireValue;
 
       expect(merged.added, 2);

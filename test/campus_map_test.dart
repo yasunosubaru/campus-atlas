@@ -151,8 +151,8 @@ void main() {
 
     test('the closer of two nearby dots wins', () {
       final geometry = CampusMapGeometry(const Size(400, 400));
-      final nearB = geometry.offsetOf(b.latitude, b.longitude) +
-          const Offset(4, 0);
+      final nearB =
+          geometry.offsetOf(b.latitude, b.longitude) + const Offset(4, 0);
       expect(nearestPlace(places, geometry, nearB)?.name, 'B');
     });
   });

@@ -92,8 +92,7 @@ enum GradeScope {
   requiredOnly;
 
   /// Whether [kind] (a raw 课程性质 cell) belongs in this scope.
-  bool accepts(String kind) =>
-      this == GradeScope.all || kind.contains('必修');
+  bool accepts(String kind) => this == GradeScope.all || kind.contains('必修');
 }
 
 /// One set of statistics over a selection of rows.
@@ -249,7 +248,8 @@ List<TermStats> termStats(
 }) {
   final grouped = <String, List<GradeRecord>>{};
   for (final row in rows) {
-    grouped.putIfAbsent('${row.year}|${row.semester}', () => <GradeRecord>[])
+    grouped
+        .putIfAbsent('${row.year}|${row.semester}', () => <GradeRecord>[])
         .add(row);
   }
 

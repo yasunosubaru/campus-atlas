@@ -48,9 +48,8 @@ class _ReviewDraftsScreenState extends State<ReviewDraftsScreen> {
     );
     if (edited == null || !mounted) return;
 
-    final result = await AppScope.of(context, dependOn: false)
-        .reviewDrafts
-        .upsert(edited);
+    final result =
+        await AppScope.of(context, dependOn: false).reviewDrafts.upsert(edited);
     if (!mounted) return;
     if (result is Failure) {
       _message(result.errorOrNull?.message ?? '');
@@ -110,8 +109,7 @@ class _ReviewDraftsScreenState extends State<ReviewDraftsScreen> {
                   ),
                   children: [
                     Text(l10n.draftsIntro,
-                        style: text.bodySmall
-                            ?.copyWith(color: scheme.outline)),
+                        style: text.bodySmall?.copyWith(color: scheme.outline)),
                     const SizedBox(height: AppTheme.spaceSm),
                     for (final draft in _drafts)
                       Card(
@@ -166,8 +164,7 @@ class _ReviewDraftsScreenState extends State<ReviewDraftsScreen> {
                                     ),
                                     IconButton(
                                       tooltip: l10n.delete,
-                                      icon: const Icon(
-                                          Icons.delete_outline,
+                                      icon: const Icon(Icons.delete_outline,
                                           size: 20),
                                       onPressed: () => _remove(draft),
                                     ),
@@ -250,13 +247,11 @@ class _DraftEditorState extends State<_DraftEditor> {
             children: [
               TextField(
                 controller: _course,
-                decoration:
-                    InputDecoration(labelText: l10n.draftsCourse),
+                decoration: InputDecoration(labelText: l10n.draftsCourse),
               ),
               TextField(
                 controller: _teacher,
-                decoration:
-                    InputDecoration(labelText: l10n.draftsTeacher),
+                decoration: InputDecoration(labelText: l10n.draftsTeacher),
               ),
               const SizedBox(height: AppTheme.spaceSm),
               Row(

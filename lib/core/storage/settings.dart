@@ -192,8 +192,7 @@ class AppSettings {
   Future<String> gpaStandard() =>
       _store.getString(_kGpaStandard, fallback: 'whu');
 
-  Future<void> setGpaStandard(String id) =>
-      _store.setString(_kGpaStandard, id);
+  Future<void> setGpaStandard(String id) => _store.setString(_kGpaStandard, id);
 
   /// Whether the archive counts compulsory courses only.
   Future<bool> gpaRequiredOnly() => _store.getBool(_kGpaRequiredOnly);

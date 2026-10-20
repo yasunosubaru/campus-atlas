@@ -160,8 +160,7 @@ class _HamCourseSheetState extends State<HamCourseSheet> {
                     ),
                   const SizedBox(width: AppTheme.spaceMd),
                   Text(
-                    l10n.hamSamples
-                        .replaceAll('%d', '${widget.score.total}'),
+                    l10n.hamSamples.replaceAll('%d', '${widget.score.total}'),
                     style: text.bodySmall?.copyWith(color: scheme.outline),
                   ),
                 ],
@@ -224,7 +223,8 @@ class _HamCourseSheetState extends State<HamCourseSheet> {
             l10n.hamTotalCount.replaceAll('%d', '${page.total}'),
             style: text.bodySmall?.copyWith(color: scheme.outline),
           ),
-          for (final comment in page.comments) _commentTile(comment, text, scheme),
+          for (final comment in page.comments)
+            _commentTile(comment, text, scheme),
         ],
       ),
     );
@@ -299,8 +299,7 @@ class _HamCourseSheetState extends State<HamCourseSheet> {
                   for (final year in years)
                     DropdownMenuItem(value: year, child: Text('$year')),
                 ],
-                onChanged: (value) =>
-                    setState(() => _year = value ?? _year),
+                onChanged: (value) => setState(() => _year = value ?? _year),
               ),
             ),
             const SizedBox(width: AppTheme.spaceSm),

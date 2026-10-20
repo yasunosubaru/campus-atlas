@@ -34,8 +34,7 @@ class TimetableRepository {
   /// Profile id used for a timetable migrated from the single-timetable layout.
   static const String defaultProfileId = 'default';
 
-  static String _coursesKey(String profileId) =>
-      'timetable.courses.$profileId';
+  static String _coursesKey(String profileId) => 'timetable.courses.$profileId';
 
   // ------------------------------------------------------------------ profiles
 

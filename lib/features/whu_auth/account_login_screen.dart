@@ -143,7 +143,8 @@ class AccountLoginScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppTheme.spaceXs),
           Text(
-            l10n.accountAcquiredAt.replaceAll('%s', _formatTime(session.acquiredAt)),
+            l10n.accountAcquiredAt
+                .replaceAll('%s', _formatTime(session.acquiredAt)),
             style: text.bodySmall,
           ),
           Text(
@@ -181,7 +182,8 @@ class AccountLoginScreen extends StatelessWidget {
     );
   }
 
-  Future<void> _browserLogin(BuildContext context, AppLocalizations l10n) async {
+  Future<void> _browserLogin(
+      BuildContext context, AppLocalizations l10n) async {
     await JwglBrowserScreen.push(
       context,
       url: JwglOrigin.root,
@@ -239,8 +241,7 @@ class AccountLoginScreen extends StatelessWidget {
     return left.isNegative ? 0 : left.inMinutes;
   }
 
-  static String _formatTime(DateTime at) =>
-      '${at.month}-${at.day} '
+  static String _formatTime(DateTime at) => '${at.month}-${at.day} '
       '${at.hour.toString().padLeft(2, '0')}:'
       '${at.minute.toString().padLeft(2, '0')}';
 }

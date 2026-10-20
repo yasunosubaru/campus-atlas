@@ -159,8 +159,7 @@ class ReviewDraftRepository {
   Future<Result<List<ReviewDraft>>> remove(String id) async {
     final current = await list();
     if (current is Failure<List<ReviewDraft>>) return current;
-    final next =
-        current.requireValue.where((draft) => draft.id != id).toList();
+    final next = current.requireValue.where((draft) => draft.id != id).toList();
     return _persist(next);
   }
 

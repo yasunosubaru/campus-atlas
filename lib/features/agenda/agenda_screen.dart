@@ -115,7 +115,8 @@ class _AgendaScreenState extends State<AgendaScreen> {
       lastDate: DateTime(start.year + 5),
     );
     if (picked == null || !mounted) return;
-    setState(() => _repeatUntil = DateTime(picked.year, picked.month, picked.day));
+    setState(
+        () => _repeatUntil = DateTime(picked.year, picked.month, picked.day));
   }
 
   void _showText(String message) {

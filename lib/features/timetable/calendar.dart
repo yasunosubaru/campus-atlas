@@ -51,5 +51,7 @@ List<Course> coursesOnDate(
 ///
 /// Done items are kept: the month view is a record of the day, and a ticked
 /// task that happened still happened.
-List<AgendaItem> agendaOnDate(List<AgendaItem> items, DateTime date) =>
-    [for (final item in items) if (item.occursOn(date)) item];
+List<AgendaItem> agendaOnDate(List<AgendaItem> items, DateTime date) => [
+      for (final item in items)
+        if (item.occursOn(date)) item
+    ];

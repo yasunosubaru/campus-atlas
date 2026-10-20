@@ -66,9 +66,17 @@ void main() {
 
     test('a repeated course earns its credits once', () {
       final status = computeAcademicStatus([
-        row(name: 'A', year: '2024-2025', semester: '2', scoreText: '55',
+        row(
+            name: 'A',
+            year: '2024-2025',
+            semester: '2',
+            scoreText: '55',
             score: 55),
-        row(name: 'A', year: '2025-2026', semester: '1', scoreText: '85',
+        row(
+            name: 'A',
+            year: '2025-2026',
+            semester: '1',
+            scoreText: '85',
             score: 85),
       ], GpaStandard.whu);
 
@@ -92,8 +100,7 @@ void main() {
         row(year: '2024-2025', semester: '2', name: 'B', credits: 2),
       ], GpaStandard.whu);
 
-      expect(status.terms.map((t) => t.label),
-          ['2024-2025 2', '2025-2026 1']);
+      expect(status.terms.map((t) => t.label), ['2024-2025 2', '2025-2026 1']);
       expect(status.terms.first.credits, 2);
       expect(status.terms.last.credits, 3);
     });

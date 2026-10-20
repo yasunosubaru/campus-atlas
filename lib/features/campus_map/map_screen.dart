@@ -99,7 +99,8 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           Expanded(
-            child: _mode == _Mode.campus ? _campusBody(l10n) : _searchBody(l10n),
+            child:
+                _mode == _Mode.campus ? _campusBody(l10n) : _searchBody(l10n),
           ),
         ],
       ),
@@ -200,7 +201,8 @@ class _MapScreenState extends State<MapScreen> {
                           left: AppTheme.spaceSm,
                           bottom: AppTheme.spaceSm,
                           child: _pill(
-                            l10n.mapPlacesCount.replaceAll('%d', '${visible.length}'),
+                            l10n.mapPlacesCount
+                                .replaceAll('%d', '${visible.length}'),
                           ),
                         ),
                         Positioned(
@@ -416,8 +418,7 @@ class _MapScreenState extends State<MapScreen> {
                                 final place = places[i];
                                 return Card(
                                   child: ListTile(
-                                    leading:
-                                        const Icon(Icons.place_outlined),
+                                    leading: const Icon(Icons.place_outlined),
                                     title: Text(
                                       place.name.isEmpty
                                           ? place.details
@@ -431,8 +432,7 @@ class _MapScreenState extends State<MapScreen> {
                                       overflow: TextOverflow.ellipsis,
                                       style: text.bodySmall,
                                     ),
-                                    trailing:
-                                        const Icon(Icons.open_in_new),
+                                    trailing: const Icon(Icons.open_in_new),
                                     onTap: () => _openInOsm(place),
                                   ),
                                 );

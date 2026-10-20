@@ -36,7 +36,8 @@ void main() {
       // it must stay redacted, and the placeholder must actually be there —
       // a capture that had lost it would look the same.
       expect(html, contains('REDACTED-ID'));
-      expect(html, isNot(matches(RegExp(r'id="sessionUserKey" value="\d{6,}"'))));
+      expect(
+          html, isNot(matches(RegExp(r'id="sessionUserKey" value="\d{6,}"'))));
     });
 
     test('the menu parses into entries', () {

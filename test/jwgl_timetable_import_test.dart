@@ -76,7 +76,8 @@ const _payload = {
   ],
 };
 
-CookieData cookie(String name, String value, {String domain = 'jwgl.whu.edu.cn'}) =>
+CookieData cookie(String name, String value,
+        {String domain = 'jwgl.whu.edu.cn'}) =>
     (
       name: name,
       value: value,
@@ -140,8 +141,7 @@ void main() {
     });
 
     test('merges two week ranges of the same slot into one course', () {
-      final structures =
-          parsed.courses.where((c) => c.name == '数据结构').toList();
+      final structures = parsed.courses.where((c) => c.name == '数据结构').toList();
       expect(structures, hasLength(1));
       expect(structures.single.weeks, {for (var w = 1; w <= 16; w++) w});
     });
@@ -193,12 +193,9 @@ void main() {
     test('weeks read every documented form', () {
       expect(parseJwglWeeks('1-16周'), {for (var w = 1; w <= 16; w++) w});
       expect(parseJwglWeeks('第1-4周'), {1, 2, 3, 4});
-      expect(parseJwglWeeks('1-15周(单)'),
-          {for (var w = 1; w <= 15; w += 2) w});
-      expect(parseJwglWeeks('1-16周(双)'),
-          {for (var w = 2; w <= 16; w += 2) w});
-      expect(parseJwglWeeks('1-16周(单双)'),
-          {for (var w = 1; w <= 16; w++) w});
+      expect(parseJwglWeeks('1-15周(单)'), {for (var w = 1; w <= 15; w += 2) w});
+      expect(parseJwglWeeks('1-16周(双)'), {for (var w = 2; w <= 16; w += 2) w});
+      expect(parseJwglWeeks('1-16周(单双)'), {for (var w = 1; w <= 16; w++) w});
       expect(parseJwglWeeks('3,5,7'), {3, 5, 7});
       expect(parseJwglWeeks('1-4周,6周'), {1, 2, 3, 4, 6});
       expect(parseJwglWeeks(''), isNull);

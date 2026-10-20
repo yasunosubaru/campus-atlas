@@ -227,13 +227,11 @@ class JwglRepository {
     // sign-in still ended up showing the CAS sign-in page.
     final Result<RedirectedGet> got;
     try {
-      got = await client
-          .getFollowing(
-            uri,
-            cookieFor: s.cookieHeaderFor,
-            headers: {'referer': '${JwglOrigin.root}/xtgl/index.html'},
-          )
-          .timeout(const Duration(seconds: 90));
+      got = await client.getFollowing(
+        uri,
+        cookieFor: s.cookieHeaderFor,
+        headers: {'referer': '${JwglOrigin.root}/xtgl/index.html'},
+      ).timeout(const Duration(seconds: 90));
     } on TimeoutException {
       // Belt over the client's own per-hop deadlines. If this fires, one of the
       // inner timeouts did not — which is itself the finding.
