@@ -1,0 +1,35 @@
+# Normalise line endings: the repository stores LF, every platform checks out
+# what it likes. Binary files are marked so git never touches them.
+* text=auto eol=lf
+
+*.dart text
+*.md text
+*.yaml text
+*.yml text
+*.json text
+*.txt text
+*.py text
+*.html text
+*.xml text
+*.plist text
+*.sh text
+*.bat text
+*.ps1 text
+*.cpp text
+*.h text
+*.rc text
+*.cmake text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.icns binary
+*.pdf binary
+*.zip binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.pdb binary

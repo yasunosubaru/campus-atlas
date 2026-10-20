@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安全问题（不要开公开 issue）
+    url: https://github.com/yasunosubaru/campus-atlas/security/advisories/new
+    about: 请用私密漏洞报告渠道。
+  - name: 隐私与脱敏
+    url: https://github.com/yasunosubaru/campus-atlas/blob/main/SECURITY.md
+    about: 这个应用会碰到学号、成绩、课表——边界写在这里。

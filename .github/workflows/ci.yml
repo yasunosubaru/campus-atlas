@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: analyze · test · desensitize
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.47.7'
+          cache: true
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Format
+        run: |
+          dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+
+      - name: Test
+        run: flutter test --reporter expanded
+
+      - name: Desensitization guard
+        # The repository is public: no student id, no name, no home path, no
+        # token may enter it. The guard is a tripwire, not a proof — it is
+        # checked in CI so a slip is caught before it is pushed.
+        run: python tools/check_desensitization.py
+
+  build-windows:
+    name: Windows release build
+    runs-on: windows-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.47.7'
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Build
+        run: flutter build windows --release
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $rel = 'build\windows\x64\runner\Release'
+          $zip = 'campus-atlas-windows-x64.zip'
+          Compress-Archive -Path "$rel\*" -DestinationPath $zip
+          "built $zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: campus-atlas-windows-x64
+          path: campus-atlas-windows-x64.zip
+          retention-days: 14

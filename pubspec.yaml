@@ -1,0 +1,60 @@
+name: campus_atlas
+description: >-
+  Independent cross-platform campus companion app. Original third-party
+  implementation built from observed behaviour — not affiliated with,
+  endorsed by, or derived from any closed-source campus application.
+publish_to: "none"
+version: 0.1.0+1
+repository: https://github.com/yasunosubaru/campus-atlas
+issue_tracker: https://github.com/yasunosubaru/campus-atlas/issues
+documentation: https://github.com/yasunosubaru/campus-atlas#readme
+homepage: https://github.com/yasunosubaru/campus-atlas
+topics:
+  - campus
+  - timetable
+  - grades
+  - flutter
+  - offline-first
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  http: ^1.2.0
+  shared_preferences: ^2.3.0
+  url_launcher: ^6.3.0
+  # Interactive CAS sign-in, done over plain HTTP in Dart.
+  #
+  # There used to be an embedded browser here (`flutter_inappwebview`). It worked
+  # in debug and profile and rendered nothing in a release build — the window
+  # went dark, the WebView2 process never navigated, and no Dart exception was
+  # raised, so the fault was in the engine's platform-view compositing rather
+  # than in anything this project can edit. Speaking CAS over HTTP instead
+  # removed the whole class of problem and made the sign-in testable without a
+  # display. See `lib/features/whu_auth/cas_login_screen.dart` for the full
+  # account, including the two plugins that were tried first.
+  #
+  # Credentials are typed into this app, used for one request, and dropped. The
+  # cookie jar that comes back lives in memory for the process lifetime and is
+  # never written to disk.
+  #
+  # Altcha proof-of-work, used by the grades-query client.
+  crypto: ^3.0.7
+  # AES for the sign-in form's own password encryption — the page uses
+  # AES-CBC/PKCS7 and no RSA. `crypto` does not do block ciphers, so this is a
+  # separate dependency; `bin/verify_cas_crypto.dart` checks its output against
+  # the page's own `encrypt.js` byte for byte.
+  pointycastle: ^4.0.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
